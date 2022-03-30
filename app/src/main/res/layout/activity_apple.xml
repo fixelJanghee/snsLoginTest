@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="appleText"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/appleLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Apple Login"
+            app:layout_constraintBottom_toTopOf="@+id/appleLoginText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appleLoginText"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:text="Apple Login Activity"
+            android:scrollbars="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appleLogin" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

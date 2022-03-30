@@ -1,5 +1,6 @@
 package com.devlee.logintest
 
+import android.content.Intent
 import android.content.IntentSender
 import android.net.Uri
 import android.os.Bundle
@@ -100,6 +101,12 @@ class MainActivity : AppCompatActivity() {
         binding.googleLogin.setOnClickListener { googleLogin() }
         binding.googleLogout.setOnClickListener { googleLogout() }
         binding.googleServer.setOnClickListener { googleServer() }
+
+        // 애플 로그인 클릭
+        binding.appleLoginActivity.setOnClickListener {
+            val intent = Intent(this, AppleLogin::class.java)
+            startActivity(intent)
+        }
 
         oneTapClient = Identity.getSignInClient(this)
         signInRequest = BeginSignInRequest.builder()
