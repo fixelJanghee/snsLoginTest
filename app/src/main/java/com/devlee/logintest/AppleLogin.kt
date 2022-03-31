@@ -57,10 +57,23 @@ class AppleLogin : AppCompatActivity() {
         auth.startActivityForSignInWithProvider(this, provider.build())
             .addOnSuccessListener { authResult ->
                 // Sign-in successful
+                authResult.user?.getIdToken(true)?.addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        val test = """
+                            token -> ${it.result.token}
+                            expirationTime -> ${it.result.expirationTimestamp}
+                            authTime -> ${it.result.authTimestamp}
+                        """.trimIndent()
+
+                        Log.d(TAG, "signUp: $test")
+                    } else {
+                        Log.e(TAG, "signUp: exception -> ${it.exception?.localizedMessage}", )
+                    }
+                }
                 val message = """
                     email -> ${authResult.user?.email}
-                    idToken -> ${authResult.user?.getIdToken(true)}
                     provider -> ${authResult.credential?.provider}
+                    session -> ${authResult.user?.multiFactor?.session}
                 """.trimIndent()
                 Log.d(TAG, "Sign-in success:: ${authResult.user}")
                 Log.d(TAG, message)
